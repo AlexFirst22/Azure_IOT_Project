@@ -490,4 +490,4 @@ if __name__ == "__main__":
     print("   Prevod jednotiek:    http://localhost:5000/api/prevod?hodnota=25&typ=c_to_f")
     print("   História prevodov:   http://localhost:5000/api/historia-prevodov")
     print("=" * 60)
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=8000, debug=True)
