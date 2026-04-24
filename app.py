@@ -477,17 +477,22 @@ def historia_prevodov():
 # port=5000      = štandardný Flask port
 # debug=True     = automaticky reštartuje server pri zmene kódu (len pre vývoj!)
 
+# if __name__ == "__main__":
+#     inicializuj_databazu()  # Vytvorí tabuľku pri prvom spustení
+#     print("=" * 60)
+#     print("🚀 IoT Backend Server beží!")
+#     print("=" * 60)
+#     print("   Frontend A (Admin):  http://localhost:5000/")
+#     print("   Frontend B (Klient): http://localhost:5000/klient")
+#     print("   API História:        http://localhost:5000/api/historia")
+#     print("   API Štatistiky:      http://localhost:5000/api/statistiky")
+#     print("   IoT Endpoint:        http://localhost:5000/iot/odosli?teplota=22&vlhkost=60")
+#     print("   Prevod jednotiek:    http://localhost:5000/api/prevod?hodnota=25&typ=c_to_f")
+#     print("   História prevodov:   http://localhost:5000/api/historia-prevodov")
+#     print("=" * 60)
+#     app.run(host="0.0.0.0", port=8000, debug=True)
+
+
 if __name__ == "__main__":
-    inicializuj_databazu()  # Vytvorí tabuľku pri prvom spustení
-    print("=" * 60)
-    print("🚀 IoT Backend Server beží!")
-    print("=" * 60)
-    print("   Frontend A (Admin):  http://localhost:5000/")
-    print("   Frontend B (Klient): http://localhost:5000/klient")
-    print("   API História:        http://localhost:5000/api/historia")
-    print("   API Štatistiky:      http://localhost:5000/api/statistiky")
-    print("   IoT Endpoint:        http://localhost:5000/iot/odosli?teplota=22&vlhkost=60")
-    print("   Prevod jednotiek:    http://localhost:5000/api/prevod?hodnota=25&typ=c_to_f")
-    print("   História prevodov:   http://localhost:5000/api/historia-prevodov")
-    print("=" * 60)
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    inicializuj_databazu()
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
