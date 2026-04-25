@@ -39,6 +39,7 @@ import os
 #
 # 🔑 Prečo CORS? Prehliadač štandardne BLOKUJE požiadavky medzi rôznymi
 #    doménami (napr. frontend-a.com → backend.com). CORS to povolí.
+DATABASE = "databaza.db"
 def inicializuj_databazu():
     """
     Vytvorí tabuľku 'vypocty', ak ešte neexistuje.
@@ -79,7 +80,7 @@ inicializuj_databazu()
 #   vysledok  = výsledok výpočtu
 #   cas       = kedy bol výpočet vykonaný
 
-DATABASE = "databaza.db"
+
 
 
 
