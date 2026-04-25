@@ -39,27 +39,6 @@ import os
 #
 # 🔑 Prečo CORS? Prehliadač štandardne BLOKUJE požiadavky medzi rôznymi
 #    doménami (napr. frontend-a.com → backend.com). CORS to povolí.
-
-app = Flask(__name__)
-CORS(app)  # Bez tohto by Frontend B nemohol komunikovať s backendom!
-
-# ─────────────────────────────────────────────────────────────────────────────
-# DATABÁZA - SQLite
-# ─────────────────────────────────────────────────────────────────────────────
-# SQLite je jednoduchá databáza uložená v jednom súbore (databaza.db).
-# Netreba inštalovať žiadny databázový server — ideálne pre výuku.
-#
-# Schéma tabuľky "vypocty":
-#   id        = automatické číslovanie (PRIMARY KEY)
-#   cislo1    = prvé zadané číslo
-#   cislo2    = druhé zadané číslo
-#   operacia  = typ operácie (plus, minus, krat, deleno)
-#   vysledok  = výsledok výpočtu
-#   cas       = kedy bol výpočet vykonaný
-
-DATABASE = "databaza.db"
-
-
 def inicializuj_databazu():
     """
     Vytvorí tabuľku 'vypocty', ak ešte neexistuje.
@@ -82,6 +61,28 @@ def inicializuj_databazu():
     conn.commit()
     conn.close()
     print("✅ Databáza inicializovaná.")
+app = Flask(__name__)
+CORS(app)  # Bez tohto by Frontend B nemohol komunikovať s backendom!
+inicializuj_databazu()
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DATABÁZA - SQLite
+# ─────────────────────────────────────────────────────────────────────────────
+# SQLite je jednoduchá databáza uložená v jednom súbore (databaza.db).
+# Netreba inštalovať žiadny databázový server — ideálne pre výuku.
+#
+# Schéma tabuľky "vypocty":
+#   id        = automatické číslovanie (PRIMARY KEY)
+#   cislo1    = prvé zadané číslo
+#   cislo2    = druhé zadané číslo
+#   operacia  = typ operácie (plus, minus, krat, deleno)
+#   vysledok  = výsledok výpočtu
+#   cas       = kedy bol výpočet vykonaný
+
+DATABASE = "databaza.db"
+
+
+
 
 
 def uloz_do_databazy(cislo1, cislo2, operacia, vysledok):
